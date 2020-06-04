@@ -1,0 +1,9 @@
+language: bash
+sudo: required
+services: docker
+
+script:
+  - docker build . -t liupeng0518/k8s-helm-arm64:v2.16.7
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push liupeng0518/k8s-helm-arm64:v2.16.7
